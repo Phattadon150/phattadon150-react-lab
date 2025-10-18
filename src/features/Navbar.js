@@ -1,20 +1,23 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom"; // ✅ เพิ่มบรรทัดนี้
 
 function Navbar({ className }) {
   return (
     <header className={className}>
-      <a href="/" className="brand">
+      {/* ✅ เปลี่ยนจาก <a> → <Link> */}
+      <Link to="/" className="brand">
         Trendie
-      </a>
-      <a href="/create-product">Create product</a>
+      </Link>
+
+      <Link to="/create-product">Create product</Link>
     </header>
   );
 }
 
 Navbar.propTypes = {
-  className: PropTypes.string.isRequired
+  className: PropTypes.string.isRequired,
 };
 
 export default styled(Navbar)`
@@ -36,5 +39,17 @@ export default styled(Navbar)`
   .brand {
     font-weight: bold;
     font-size: 1.5rem;
+    text-decoration: none;
+    color: #000;
+  }
+
+  a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+
+  a:hover {
+    color: #007bff;
   }
 `;

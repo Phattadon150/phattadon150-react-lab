@@ -1,19 +1,22 @@
 import React from 'react';
-
-import Navbar from './features/Navbar';
-import Container from './features/Container';
-import Home from './features/Home';
-import GlobalStyle from './features/GlobalStyle';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import Product from './product/Product';
+import AddForm from './product/AddForm';
+import UpdateForm from './product/UpdateForm';
+import Navbar from './Navbar';
 
 function App() {
   return (
-    <>
-      <GlobalStyle />
+    <Router>
       <Navbar />
-      <Container>
-        <Home />
-      </Container>
-    </>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/add" element={<AddForm />} />
+        <Route path="/update" element={<UpdateForm />} />
+      </Routes>
+    </Router>
   );
 }
 
